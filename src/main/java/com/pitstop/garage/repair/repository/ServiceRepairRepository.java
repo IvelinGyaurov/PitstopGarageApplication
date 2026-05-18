@@ -1,0 +1,25 @@
+package com.pitstop.garage.repair.repository;
+
+import com.pitstop.garage.repair.model.RepairStatus;
+import com.pitstop.garage.repair.model.ServiceRepair;
+import com.pitstop.garage.user.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.UUID;
+
+@Repository
+public interface ServiceRepairRepository extends JpaRepository<ServiceRepair, UUID> {
+
+    List<ServiceRepair> findAllByClientOrderByCreatedOnDesc(User client);
+
+    List<ServiceRepair> findAllByMechanicOrderByCreatedOnDesc(User mechanic);
+
+    List<ServiceRepair> findAllByStatusOrderByCreatedOnAsc(RepairStatus status);
+
+    List<ServiceRepair> findAllByMechanicAndStatusInOrderByCreatedOnDesc(
+            User mechanic,
+            List<RepairStatus> statuses
+    );
+}
