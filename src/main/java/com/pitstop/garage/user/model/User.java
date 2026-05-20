@@ -52,10 +52,13 @@ public class User {
 
     @Column(nullable = false)
     @Builder.Default
-    private boolean enabled = true;
+    private boolean isActive = true;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     private LocalDateTime createdOn;
+
+    @Column(nullable = false)
+    private LocalDateTime updatedOn;
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
     @Builder.Default
