@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - PitStop Garage</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+</head>
+<body>
+<div class="auth-card wide">
+    <h1>PitStop Garage</h1>
+    <p>Welcome, <strong th:text="${username}">user</strong>!</p>
+    <p>Role: <strong sec:authentication="authorities">ROLE</strong></p>
+    <p class="hint">You are logged in. Car and repair features will be added here.</p>
+
+    <form th:action="@{/logout}" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <button type="submit" class="secondary">Logout</button>
+    </form>
+</div>
+</body>
+</html>

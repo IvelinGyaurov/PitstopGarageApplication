@@ -50,9 +50,9 @@ public class User {
     @Column(nullable = false)
     private UserRole role;
 
-    @Column(nullable = false)
+    @Column(name = "enabled", nullable = false)
     @Builder.Default
-    private boolean isActive = true;
+    private boolean enabled = true;
 
     @Column(nullable = false)
     private LocalDateTime createdOn;
@@ -74,8 +74,12 @@ public class User {
 
     @PrePersist
     void onCreate() {
+        LocalDateTime now = LocalDateTime.now();
         if (createdOn == null) {
-            createdOn = LocalDateTime.now();
+            createdOn = now;
+        }
+        if (updatedOn == null) {
+            updatedOn = now;
         }
     }
 }

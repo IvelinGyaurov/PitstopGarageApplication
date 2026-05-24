@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error - PitStop Garage</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+</head>
+<body>
+<div class="auth-card">
+    <h1>Error</h1>
+    <p class="alert error" th:text="${message}">Something went wrong.</p>
+    <p class="footer-link"><a th:href="@{/home}">Back to home</a></p>
+</div>
+</body>
+</html>
